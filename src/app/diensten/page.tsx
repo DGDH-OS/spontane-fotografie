@@ -40,7 +40,7 @@ export default function DienstenPage() {
                   </span>
                   <Link
                     href="/boeken"
-                    className="flex items-center gap-1.5 text-sm uppercase tracking-widest text-gold hover:underline"
+                    className="flex items-center gap-1.5 py-1 text-sm uppercase tracking-widest text-gold hover:underline"
                   >
                     Vraag {s.title.toLowerCase()}-shoot aan <ArrowIcon />
                   </Link>

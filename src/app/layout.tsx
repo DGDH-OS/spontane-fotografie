@@ -30,6 +30,13 @@ export const metadata: Metadata = {
     "portretfotograaf",
     "videograaf bruiloft",
   ],
+  // Site staat NIET open voor Google-indexering tot de klant officieel
+  // betaalt (Ruben, expliciete instructie). NOOIT verwijderen zonder
+  // uitdrukkelijke ja van Ruben.
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: "Spontane Fotografie · Bruiloft & Fashion Fotograaf Lelystad",
     description:
