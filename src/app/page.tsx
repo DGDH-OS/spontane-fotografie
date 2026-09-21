@@ -3,6 +3,7 @@ import Link from "next/link";
 import { business, portfolioItems, services, brandLines, workflowSteps } from "@/lib/content";
 import PortfolioCard from "@/components/PortfolioCard";
 import ArrowIcon from "@/components/ArrowIcon";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
   const preview = portfolioItems.slice(0, 5);
@@ -23,7 +24,10 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" />
         <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-14 pt-32 md:px-8 md:pb-20">
-          <span className="sf-eyebrow text-gold-soft">{business.tagline}</span>
+          <span className="flex items-center gap-3 sf-eyebrow text-gold-soft">
+            <span className="sf-diamond" aria-hidden="true" />
+            {business.tagline}
+          </span>
           <h1 className="max-w-2xl font-heading text-4xl leading-tight md:text-6xl">
             {brandLines[0]}
           </h1>
@@ -52,27 +56,31 @@ export default function Home() {
 
       {/* DIENSTEN — asymmetrisch, geen herhaald 4-koloms grid */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
-        <div className="mb-10 flex flex-col gap-2">
+        <Reveal className="mb-10 flex flex-col gap-2">
+          <span className="sf-section-number">01</span>
           <span className="sf-eyebrow">Wat we fotograferen</span>
           <h2 className="font-heading text-3xl md:text-4xl">Diensten</h2>
-        </div>
+        </Reveal>
         <div className="grid gap-6 md:grid-cols-6">
           {services.map((s, i) => (
-            <Link
+            <Reveal
               key={s.slug}
-              href={`/diensten#${s.slug}`}
-              className={`flex flex-col justify-between gap-4 border border-line bg-white p-6 transition hover:border-gold md:p-8 ${
-                i === 0 ? "md:col-span-4" : i === 1 ? "md:col-span-2" : "md:col-span-3"
-              }`}
+              delayMs={i * 90}
+              className={i === 0 ? "md:col-span-4" : i === 1 ? "md:col-span-2" : "md:col-span-3"}
             >
-              <div>
-                <h3 className="font-heading text-2xl">{s.title}</h3>
-                <p className="mt-2 text-sm text-ink/70">{s.short}</p>
-              </div>
-              <span className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold">
-                Meer <ArrowIcon />
-              </span>
-            </Link>
+              <Link
+                href={`/diensten#${s.slug}`}
+                className="flex h-full flex-col justify-between gap-4 border border-line bg-white p-6 transition hover:border-gold md:p-8"
+              >
+                <div>
+                  <h3 className="font-heading text-2xl">{s.title}</h3>
+                  <p className="mt-2 text-sm text-ink/70">{s.short}</p>
+                </div>
+                <span className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold">
+                  Meer <ArrowIcon />
+                </span>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -80,19 +88,21 @@ export default function Home() {
       {/* PORTFOLIO PREVIEW — asymmetrisch bento, geen keurig 3x3-grid */}
       <section className="border-y border-line bg-ivory-dim">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <div>
+          <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div className="flex flex-col gap-2">
+              <span className="sf-section-number">02</span>
               <span className="sf-eyebrow">Recent werk</span>
               <h2 className="font-heading text-3xl md:text-4xl">Portfolio</h2>
             </div>
             <Link href="/portfolio" className="flex items-center gap-1.5 text-sm uppercase tracking-widest text-gold hover:underline">
               Bekijk volledige portfolio <ArrowIcon />
             </Link>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-6 md:gap-5">
             {preview.map((item, i) => (
-              <div
+              <Reveal
                 key={item.id}
+                delayMs={i * 70}
                 className={
                   i === 0
                     ? "col-span-2 md:col-span-3 md:row-span-2"
@@ -104,7 +114,7 @@ export default function Home() {
                 }
               >
                 <PortfolioCard item={item} />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -112,27 +122,31 @@ export default function Home() {
 
       {/* WERKWIJZE */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
-        <div className="mb-10 flex flex-col gap-2">
+        <Reveal className="mb-10 flex flex-col gap-2">
+          <span className="sf-section-number">03</span>
           <span className="sf-eyebrow">Hoe een boeking verloopt</span>
           <h2 className="font-heading text-3xl md:text-4xl">Werkwijze</h2>
           <p className="max-w-xl text-sm text-ink/70">
             Transparantie staat voorop: je weet vooraf wat je kunt verwachten,
             zowel qua planning als communicatie.
           </p>
-        </div>
+        </Reveal>
         <ol className="grid gap-6 md:grid-cols-3">
-          {workflowSteps.map((w) => (
-            <li key={w.step} className="border-t-2 border-gold pt-4">
-              <p className="font-heading text-lg">{w.step}</p>
-              <p className="mt-2 text-sm text-ink/70">{w.text}</p>
-            </li>
+          {workflowSteps.map((w, i) => (
+            <Reveal key={w.step} delayMs={i * 120}>
+              <li className="border-t-2 border-gold pt-4">
+                <p className="font-heading text-lg">{w.step}</p>
+                <p className="mt-2 text-sm text-ink/70">{w.text}</p>
+              </li>
+            </Reveal>
           ))}
         </ol>
       </section>
 
       {/* SOCIAL PROOF */}
       <section className="border-t border-line bg-ink text-ivory">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-4 py-16 md:px-8 md:py-20">
+        <Reveal className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-4 py-16 md:px-8 md:py-20">
+          <span className="sf-section-number text-gold-soft">04</span>
           <span className="sf-eyebrow text-gold-soft">Volg ons</span>
           <h2 className="font-heading text-3xl md:text-4xl">
             {business.followersExact} volgers op Instagram
@@ -149,7 +163,7 @@ export default function Home() {
           >
             {business.handle} volgen <ArrowIcon />
           </a>
-        </div>
+        </Reveal>
       </section>
     </>
   );

@@ -13,7 +13,11 @@ export default function DienstenPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-14 md:px-8 md:py-20">
       <div className="mb-10 flex flex-col gap-2">
-        <span className="sf-eyebrow">Wat we fotograferen</span>
+        <span className="sf-section-number">01</span>
+        <span className="flex items-center gap-3 sf-eyebrow">
+          <span className="sf-diamond" aria-hidden="true" />
+          Wat we fotograferen
+        </span>
         <h1 className="font-heading text-4xl md:text-5xl">Diensten</h1>
       </div>
 

@@ -89,6 +89,48 @@ input, select, textarea {
   border-color: var(--sf-gold);
 }
 
+/* --- Scroll-reveal (eigen IntersectionObserver, geen GSAP-licentie) --- */
+.sf-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s cubic-bezier(0.2, 0, 0, 1), transform 0.5s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.sf-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Herhaald merk-motief: dunne diamant-lijn (letterlijk uit de eigen IG-
+ * caption "the diamond of the season"). Zuiver decoratief, altijd hetzelfde
+ * motief, wisselende positie/schaal per sectie (case-study Driessen
+ * Architectuur: 1-2 herhaalde motieven i.p.v. 0 of 5+). --- */
+.sf-diamond {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  border: 1px solid var(--sf-gold);
+}
+
+.sf-diamond::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--sf-gold);
+  opacity: 0.5;
+}
+
+/* --- Sectienummering (case-study Driessen: oriëntatielabel, rustig motief) --- */
+.sf-section-number {
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--sf-gold);
+  opacity: 0.7;
+}
+
 @media (min-width: 768px) {
   body {
     padding-bottom: 0;
@@ -102,6 +144,12 @@ input, select, textarea {
 
   .sf-fade-in {
     animation: none;
+  }
+
+  .sf-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   * {
