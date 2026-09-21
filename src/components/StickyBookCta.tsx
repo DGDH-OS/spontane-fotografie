@@ -3,7 +3,7 @@ import { business } from "@/lib/content";
 
 export default function StickyBookCta() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-ink md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-ink pb-[env(safe-area-inset-bottom)] md:hidden">
       <div className="flex items-stretch">
         <Link
           href="/boeken"

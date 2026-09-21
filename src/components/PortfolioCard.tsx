@@ -1,4 +1,5 @@
 import { categoryLabels, type PortfolioItem } from "@/lib/content";
+import ArrowIcon from "./ArrowIcon";
 
 /**
  * Definitieve hi-res IG-assets staan nog open (zie CONTENT-MAP.md §"Wat de
@@ -24,8 +25,8 @@ export default function PortfolioCard({ item }: { item: PortfolioItem }) {
             {item.metric}
           </p>
         )}
-        <p className="mt-3 text-xs uppercase tracking-widest text-gold group-hover:underline">
-          Bekijk op Instagram →
+        <p className="mt-3 flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold group-hover:underline">
+          Bekijk op Instagram <ArrowIcon />
         </p>
       </div>
     </a>

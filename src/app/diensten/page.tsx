@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { services } from "@/lib/content";
+import ArrowIcon from "@/components/ArrowIcon";
 
 export const metadata: Metadata = {
   title: "Diensten",
@@ -29,9 +30,9 @@ export default function DienstenPage() {
                   </span>
                   <Link
                     href="/boeken"
-                    className="text-sm uppercase tracking-widest text-gold hover:underline"
+                    className="flex items-center gap-1.5 text-sm uppercase tracking-widest text-gold hover:underline"
                   >
-                    Vraag {s.title.toLowerCase()}-shoot aan →
+                    Vraag {s.title.toLowerCase()}-shoot aan <ArrowIcon />
                   </Link>
                 </div>
               </div>

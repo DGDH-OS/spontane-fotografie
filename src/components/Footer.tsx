@@ -39,9 +39,9 @@ export default function Footer() {
               {business.handle} — {business.followersExact} volgers
             </a>
             <nav className="mt-4 flex flex-col gap-1">
-              <Link href="/portfolio" className="hover:text-gold-soft">Portfolio</Link>
-              <Link href="/diensten" className="hover:text-gold-soft">Diensten</Link>
-              <Link href="/boeken" className="hover:text-gold-soft">Boeken</Link>
+              <Link href="/portfolio" className="py-1 hover:text-gold-soft">Portfolio</Link>
+              <Link href="/diensten" className="py-1 hover:text-gold-soft">Diensten</Link>
+              <Link href="/boeken" className="py-1 hover:text-gold-soft">Boeken</Link>
             </nav>
           </div>
         </div>

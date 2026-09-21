@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { business, portfolioItems, services, brandLines, workflowSteps } from "@/lib/content";
 import PortfolioCard from "@/components/PortfolioCard";
+import ArrowIcon from "@/components/ArrowIcon";
 
 export default function Home() {
   const preview = portfolioItems.slice(0, 6);
@@ -52,8 +53,8 @@ export default function Home() {
             >
               <h3 className="font-heading text-xl">{s.title}</h3>
               <p className="text-sm text-ink/70">{s.short}</p>
-              <span className="mt-auto text-xs uppercase tracking-widest text-gold">
-                Meer →
+              <span className="mt-auto flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold">
+                Meer <ArrowIcon />
               </span>
             </Link>
           ))}
@@ -68,8 +69,8 @@ export default function Home() {
               <span className="sf-eyebrow">Recent werk</span>
               <h2 className="font-heading text-3xl md:text-4xl">Portfolio</h2>
             </div>
-            <Link href="/portfolio" className="text-sm uppercase tracking-widest text-gold hover:underline">
-              Bekijk volledige portfolio →
+            <Link href="/portfolio" className="flex items-center gap-1.5 text-sm uppercase tracking-widest text-gold hover:underline">
+              Bekijk volledige portfolio <ArrowIcon />
             </Link>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -115,9 +116,9 @@ export default function Home() {
             href={business.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-gold px-6 py-3 text-sm uppercase tracking-widest text-ivory transition hover:bg-gold hover:text-ink"
+            className="border border-gold px-6 py-3 text-sm uppercase tracking-widest text-ivory transition hover:bg-gold hover:text-ink flex items-center gap-1.5 w-fit"
           >
-            {business.handle} volgen →
+            {business.handle} volgen <ArrowIcon />
           </a>
         </div>
       </section>

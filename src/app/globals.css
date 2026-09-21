@@ -41,7 +41,7 @@ body {
   color: var(--sf-ink);
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: var(--sf-sticky-height);
+  padding-bottom: calc(var(--sf-sticky-height) + env(safe-area-inset-bottom));
 }
 
 h1, h2, h3, h4 {
@@ -92,5 +92,20 @@ input, select, textarea {
 @media (min-width: 768px) {
   body {
     padding-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .sf-fade-in {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
