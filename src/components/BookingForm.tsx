@@ -1,12 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import { business, services } from "@/lib/content";
+import SubmitButton from "@/components/SubmitButton";
 
 const shootTypes = services.map((s) => s.title);
+const STANDARD_EASE = [0.2, 0, 0, 1] as const;
 
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     naam: "",
     email: "",
@@ -24,24 +28,31 @@ export default function BookingForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     // Geen backend/e-mailservice gekoppeld in deze fase: we openen een
     // vooraf ingevulde mailto zodat de aanvraag echt bij de klant terechtkomt.
-    const body = [
-      `Naam: ${form.naam}`,
-      `E-mail: ${form.email}`,
-      `Telefoon: ${form.telefoon}`,
-      `Type shoot: ${form.type}`,
-      `Datum: ${form.datum}`,
-      `Locatie: ${form.locatie}`,
-      `Budget-indicatie: ${form.budget || "niet opgegeven"}`,
-      "",
-      form.bericht,
-    ].join("\n");
-    const mailto = `mailto:${business.email}?subject=${encodeURIComponent(
-      `Boekingsaanvraag: ${form.type}, ${form.naam}`
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSubmitted(true);
+    // Spinner blijft minimaal 400ms zichtbaar (motion-systeem loading-states-regel),
+    // ook al is de mailto-actie zelf synchroon/instant.
+    window.setTimeout(() => {
+      const body = [
+        `Naam: ${form.naam}`,
+        `E-mail: ${form.email}`,
+        `Telefoon: ${form.telefoon}`,
+        `Type shoot: ${form.type}`,
+        `Datum: ${form.datum}`,
+        `Locatie: ${form.locatie}`,
+        `Budget-indicatie: ${form.budget || "niet opgegeven"}`,
+        "",
+        form.bericht,
+      ].join("\n");
+      const mailto = `mailto:${business.email}?subject=${encodeURIComponent(
+        `Boekingsaanvraag: ${form.type}, ${form.naam}`
+      )}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }, 400);
   }
 
   return (
@@ -64,7 +75,7 @@ export default function BookingForm() {
           className="sf-input"
         />
       </Field>
-      <Field label="Telefoon">
+      <Field label="Telefoon" optional>
         <input
           type="tel"
           value={form.telefoon}
@@ -86,15 +97,18 @@ export default function BookingForm() {
           ))}
         </select>
       </Field>
-      <Field label="Gewenste datum">
+      <Field label="Gewenste datum" optional>
         <input
           type="date"
           value={form.datum}
           onChange={(e) => update("datum", e.target.value)}
           className="sf-input"
         />
+        <span className="text-xs text-ink/50">
+          Nog geen definitieve datum? Vul een indicatie in, we denken graag mee.
+        </span>
       </Field>
-      <Field label="Locatie">
+      <Field label="Locatie" optional>
         <input
           type="text"
           placeholder="Stad / venue"
@@ -103,7 +117,7 @@ export default function BookingForm() {
           className="sf-input"
         />
       </Field>
-      <Field label="Budget-indicatie" full>
+      <Field label="Budget-indicatie" full optional>
         <input
           type="text"
           placeholder="Optioneel, prijs op aanvraag"
@@ -112,7 +126,7 @@ export default function BookingForm() {
           className="sf-input"
         />
       </Field>
-      <Field label="Bericht" full>
+      <Field label="Bericht" full optional>
         <textarea
           rows={5}
           value={form.bericht}
@@ -123,17 +137,27 @@ export default function BookingForm() {
       </Field>
 
       <div className="md:col-span-2">
-        <button
-          type="submit"
-          className="w-full bg-ink py-4 text-sm uppercase tracking-widest text-ivory transition hover:bg-gold hover:text-ink md:w-auto md:px-10"
-        >
-          Verstuur aanvraag
-        </button>
+        <SubmitButton
+          isSubmitting={isSubmitting}
+          success={submitted}
+          idleLabel="Verstuur aanvraag"
+          successLabel="Aanvraag verstuurd"
+          className="w-full md:w-auto"
+        />
+        <p className="mt-3 text-xs text-ink/60">
+          Na verzenden hoor je snel van ons: {business.responseTime}.
+        </p>
         {submitted && (
-          <p className="mt-3 text-sm text-ink/70">
-            Je mailprogramma opent met je aanvraag klaar om te versturen naar{" "}
-            {business.email}.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: STANDARD_EASE }}
+          >
+            <p className="mt-3 text-sm text-ink/70">
+              Je mailprogramma opent met je aanvraag klaar om te versturen naar{" "}
+              {business.email}. Daarna {business.responseTime}.
+            </p>
+          </motion.div>
         )}
         <p className="mt-3 text-xs text-ink/50">
           Prijs op aanvraag. Na je aanvraag nemen we contact op met een
@@ -149,17 +173,20 @@ function Field({
   children,
   required,
   full,
+  optional,
 }: {
   label: string;
   children: React.ReactNode;
   required?: boolean;
   full?: boolean;
+  optional?: boolean;
 }) {
   return (
     <label className={`flex flex-col gap-1.5 text-sm ${full ? "md:col-span-2" : ""}`}>
       <span className="text-ink/80">
         {label}
         {required && <span className="text-gold"> *</span>}
+        {optional && <span className="text-ink/40"> (optioneel)</span>}
       </span>
       {children}
     </label>

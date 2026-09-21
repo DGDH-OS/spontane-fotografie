@@ -10,15 +10,18 @@ export default function Reveal({
   children,
   className = "",
   delayMs = 0,
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
   delayMs?: number;
+  id?: string;
 }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
     <div
       ref={ref}
+      id={id}
       className={`sf-reveal ${visible ? "sf-reveal-visible" : ""} ${className}`}
       style={{ transitionDelay: visible ? `${delayMs}ms` : "0ms" }}
     >

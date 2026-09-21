@@ -18,8 +18,8 @@ export default function PortfolioPage() {
         </span>
         <h1 className="font-heading text-4xl md:text-5xl">Portfolio</h1>
         <p className="max-w-xl text-sm text-ink/70">
-          Een selectie uit ons werk, filterbaar op categorie. Elke foto linkt
-          door naar de originele Instagram-post.
+          Een selectie uit ons werk, filterbaar op categorie. Klik op een foto
+          voor een grotere weergave.
         </p>
       </div>
       <PortfolioFilter />

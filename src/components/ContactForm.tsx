@@ -1,19 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import { business } from "@/lib/content";
+import SubmitButton from "@/components/SubmitButton";
+
+const STANDARD_EASE = [0.2, 0, 0, 1] as const;
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({ naam: "", email: "", bericht: "" });
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const body = `Naam: ${form.naam}\nE-mail: ${form.email}\n\n${form.bericht}`;
-    window.location.href = `mailto:${business.email}?subject=${encodeURIComponent(
-      `Contactformulier: ${form.naam}`
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    // Spinner blijft minimaal 400ms zichtbaar, ook al is mailto instant.
+    window.setTimeout(() => {
+      const body = `Naam: ${form.naam}\nE-mail: ${form.email}\n\n${form.bericht}`;
+      window.location.href = `mailto:${business.email}?subject=${encodeURIComponent(
+        `Contactformulier: ${form.naam}`
+      )}&body=${encodeURIComponent(body)}`;
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }, 400);
   }
 
   return (
@@ -48,16 +59,23 @@ export default function ContactForm() {
           className="sf-input"
         />
       </label>
-      <button
-        type="submit"
-        className="bg-ink py-4 text-sm uppercase tracking-widest text-ivory transition hover:bg-gold hover:text-ink md:w-auto md:px-10"
-      >
-        Versturen
-      </button>
+      <SubmitButton
+        isSubmitting={isSubmitting}
+        success={submitted}
+        idleLabel="Versturen"
+        successLabel="Bericht verstuurd"
+        className="md:w-auto"
+      />
       {submitted && (
-        <p className="text-sm text-ink/70">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: STANDARD_EASE }}
+          className="text-sm text-ink/70"
+        >
           Je mailprogramma opent met je bericht klaar om te versturen.
-        </p>
+          Daarna {business.responseTime}.
+        </motion.p>
       )}
     </form>
   );

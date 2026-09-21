@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { services } from "@/lib/content";
 import ArrowIcon from "@/components/ArrowIcon";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Diensten",
@@ -12,18 +13,23 @@ export const metadata: Metadata = {
 export default function DienstenPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-14 md:px-8 md:py-20">
-      <div className="mb-10 flex flex-col gap-2">
+      <Reveal className="mb-10 flex flex-col gap-2">
         <span className="sf-section-number">01</span>
         <span className="flex items-center gap-3 sf-eyebrow">
           <span className="sf-diamond" aria-hidden="true" />
           Wat we fotograferen
         </span>
         <h1 className="font-heading text-4xl md:text-5xl">Diensten</h1>
-      </div>
+      </Reveal>
 
       <div className="flex flex-col divide-y divide-line border-t border-line">
-        {services.map((s) => (
-          <div key={s.slug} id={s.slug} className="scroll-mt-24 py-10 md:py-14">
+        {services.map((s, i) => (
+          <Reveal
+            key={s.slug}
+            delayMs={Math.min(i, 3) * 80}
+            id={s.slug}
+            className="scroll-mt-24 py-10 md:py-14"
+          >
             <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:gap-12">
               <h2 className="font-heading text-2xl md:text-3xl">{s.title}</h2>
               <div>
@@ -41,7 +47,7 @@ export default function DienstenPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

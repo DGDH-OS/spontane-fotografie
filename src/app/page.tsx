@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { business, portfolioItems, services, brandLines, workflowSteps } from "@/lib/content";
-import PortfolioCard from "@/components/PortfolioCard";
+import HomePortfolioPreview from "@/components/HomePortfolioPreview";
 import ArrowIcon from "@/components/ArrowIcon";
 import Reveal from "@/components/Reveal";
 
@@ -98,25 +98,7 @@ export default function Home() {
               Bekijk volledige portfolio <ArrowIcon />
             </Link>
           </Reveal>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-6 md:gap-5">
-            {preview.map((item, i) => (
-              <Reveal
-                key={item.id}
-                delayMs={i * 70}
-                className={
-                  i === 0
-                    ? "col-span-2 md:col-span-3 md:row-span-2"
-                    : i === 1
-                    ? "col-span-1 md:col-span-3"
-                    : i === 2
-                    ? "col-span-1 md:col-span-3"
-                    : "col-span-1 md:col-span-2"
-                }
-              >
-                <PortfolioCard item={item} />
-              </Reveal>
-            ))}
-          </div>
+          <HomePortfolioPreview items={preview} />
         </div>
       </section>
 

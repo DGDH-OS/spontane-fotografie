@@ -2,21 +2,23 @@
 
 /* ---------------------------------------------------------------------
  * DESIGN TOKENS — Spontane Film en Fotografie
- * Werktokens tot een volledig DESIGN.md is goedgekeurd door de klant.
- * Palet: warm zwart/ivoor + goud-accent, passend bij de
- * "elegance / timeless" tone-of-voice uit CONTENT-MAP.md
- * (bruiloft/fashion, Marokkaans-Nederlandse bruidsmarkt).
+ * Palet "Gouden Uur" (01_brand/brandkit/palette-review.json, Ruben-akkoord):
+ * warme ivoren basis + onyx voor contrast + antiek goud als signaalkleur,
+ * passend bij de "elegance / timeless" tone-of-voice (bruiloft/fashion,
+ * Marokkaans-Nederlandse bruidsmarkt). Goud blijft uitsluitend accent,
+ * nooit vlakkleur (zie NEUROMARKETING-CRO.md §4).
  * ------------------------------------------------------------------- */
 :root {
-  --sf-ink: #17140f;
-  --sf-ivory: #f7f3ec;
-  --sf-ivory-dim: #efe8db;
-  --sf-gold: #a9822f;
+  --sf-ink: #1a1714;
+  --sf-ivory: #f5efe4;
+  --sf-ivory-dim: #ece3d2;
+  --sf-gold: #b4893e;
   --sf-gold-soft: #c9a35c;
-  --sf-line: #ded3bd;
+  --sf-taupe: #8c7a63;
+  --sf-line: #ded1ba;
 
   --font-heading: var(--font-playfair);
-  --font-body: var(--font-inter);
+  --font-body: var(--font-jost);
 
   --sf-sticky-height: 64px;
 }
@@ -27,6 +29,7 @@
   --color-ivory-dim: var(--sf-ivory-dim);
   --color-gold: var(--sf-gold);
   --color-gold-soft: var(--sf-gold-soft);
+  --color-taupe: var(--sf-taupe);
   --color-line: var(--sf-line);
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
