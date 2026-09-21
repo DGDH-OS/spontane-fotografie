@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------
+ * DESIGN TOKENS — Spontane Film en Fotografie
+ * Werktokens tot een volledig DESIGN.md is goedgekeurd door de klant.
+ * Palet: warm zwart/ivoor + goud-accent, passend bij de
+ * "elegance / timeless" tone-of-voice uit CONTENT-MAP.md
+ * (bruiloft/fashion, Marokkaans-Nederlandse bruidsmarkt).
+ * ------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --sf-ink: #17140f;
+  --sf-ivory: #f7f3ec;
+  --sf-ivory-dim: #efe8db;
+  --sf-gold: #a9822f;
+  --sf-gold-soft: #c9a35c;
+  --sf-line: #ded3bd;
+
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
+
+  --sf-sticky-height: 64px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--sf-ink);
+  --color-ivory: var(--sf-ivory);
+  --color-ivory-dim: var(--sf-ivory-dim);
+  --color-gold: var(--sf-gold);
+  --color-gold-soft: var(--sf-gold-soft);
+  --color-line: var(--sf-line);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--sf-ivory);
+  color: var(--sf-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: var(--sf-sticky-height);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading), Georgia, serif;
+  letter-spacing: 0.01em;
+}
+
+.sf-eyebrow {
+  font-family: var(--font-body), system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.7rem;
+  color: var(--sf-gold);
+}
+
+.sf-fade-in {
+  animation: sf-fade-in 0.6s ease-out both;
+}
+
+@keyframes sf-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* iOS zoom-bug preventie: inputs nooit onder 16px */
+input, select, textarea {
+  font-size: 16px;
+}
+
+.sf-input {
+  border: 1px solid var(--sf-line);
+  background: #ffffff;
+  padding: 0.75rem 1rem;
+  color: var(--sf-ink);
+  outline: none;
+}
+
+.sf-input:focus {
+  border-color: var(--sf-gold);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
 }
