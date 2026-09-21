@@ -6,7 +6,7 @@ import ArrowIcon from "@/components/ArrowIcon";
 export const metadata: Metadata = {
   title: "Diensten",
   description:
-    "Bruiloft, fashion & editorial, portret en video — fotografie- en videodiensten van Spontane Fotografie, prijs op aanvraag.",
+    "Bruiloft, fashion & editorial, portret en video: fotografie- en videodiensten van Spontane Fotografie, prijs op aanvraag.",
 };
 
 export default function DienstenPage() {

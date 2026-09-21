@@ -1,22 +1,34 @@
+import Image from "next/image";
 import Link from "next/link";
 import { business, portfolioItems, services, brandLines, workflowSteps } from "@/lib/content";
 import PortfolioCard from "@/components/PortfolioCard";
 import ArrowIcon from "@/components/ArrowIcon";
 
 export default function Home() {
-  const preview = portfolioItems.slice(0, 6);
+  const preview = portfolioItems.slice(0, 5);
+  const hero = portfolioItems[1]; // wedding-2, staand formaat, sterk beeld
 
   return (
     <>
-      {/* HERO */}
-      <section className="border-b border-line bg-ink text-ivory">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 md:px-8 md:py-28">
+      {/* HERO — full-bleed foto, geen kale kleurvlakken */}
+      <section className="relative flex min-h-[88vh] items-end overflow-hidden bg-ink text-ivory md:min-h-[92vh]">
+        <Image
+          src={hero.image}
+          alt={hero.description}
+          width={hero.imageWidth}
+          height={hero.imageHeight}
+          priority
+          className="absolute inset-0 h-full w-full object-cover object-[50%_20%] opacity-75"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" />
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-14 pt-32 md:px-8 md:pb-20">
           <span className="sf-eyebrow text-gold-soft">{business.tagline}</span>
           <h1 className="max-w-2xl font-heading text-4xl leading-tight md:text-6xl">
             {brandLines[0]}
           </h1>
-          <p className="max-w-xl text-ivory/75">
-            Bruiloft, fashion, portret en video — gefotografeerd vanuit Lelystad,
+          <p className="max-w-xl text-ivory/80">
+            Bruiloft, fashion, portret en video, gefotografeerd vanuit Lelystad,
             met een internationale, tijdloze beeldtaal.
           </p>
           <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -38,22 +50,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DIENSTEN */}
+      {/* DIENSTEN — asymmetrisch, geen herhaald 4-koloms grid */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
         <div className="mb-10 flex flex-col gap-2">
           <span className="sf-eyebrow">Wat we fotograferen</span>
           <h2 className="font-heading text-3xl md:text-4xl">Diensten</h2>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
+        <div className="grid gap-6 md:grid-cols-6">
+          {services.map((s, i) => (
             <Link
               key={s.slug}
               href={`/diensten#${s.slug}`}
-              className="flex flex-col gap-3 border border-line bg-white p-6 transition hover:border-gold"
+              className={`flex flex-col justify-between gap-4 border border-line bg-white p-6 transition hover:border-gold md:p-8 ${
+                i === 0 ? "md:col-span-4" : i === 1 ? "md:col-span-2" : "md:col-span-3"
+              }`}
             >
-              <h3 className="font-heading text-xl">{s.title}</h3>
-              <p className="text-sm text-ink/70">{s.short}</p>
-              <span className="mt-auto flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold">
+              <div>
+                <h3 className="font-heading text-2xl">{s.title}</h3>
+                <p className="mt-2 text-sm text-ink/70">{s.short}</p>
+              </div>
+              <span className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold">
                 Meer <ArrowIcon />
               </span>
             </Link>
@@ -61,7 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PORTFOLIO PREVIEW */}
+      {/* PORTFOLIO PREVIEW — asymmetrisch bento, geen keurig 3x3-grid */}
       <section className="border-y border-line bg-ivory-dim">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
@@ -73,9 +89,22 @@ export default function Home() {
               Bekijk volledige portfolio <ArrowIcon />
             </Link>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {preview.map((item) => (
-              <PortfolioCard key={item.id} item={item} />
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-6 md:gap-5">
+            {preview.map((item, i) => (
+              <div
+                key={item.id}
+                className={
+                  i === 0
+                    ? "col-span-2 md:col-span-3 md:row-span-2"
+                    : i === 1
+                    ? "col-span-1 md:col-span-3"
+                    : i === 2
+                    ? "col-span-1 md:col-span-3"
+                    : "col-span-1 md:col-span-2"
+                }
+              >
+                <PortfolioCard item={item} />
+              </div>
             ))}
           </div>
         </div>
@@ -109,7 +138,7 @@ export default function Home() {
             {business.followersExact} volgers op Instagram
           </h2>
           <p className="max-w-xl text-ivory/75">
-            Ons meest recente werk verschijnt eerst op Instagram — bruiloften,
+            Ons meest recente werk verschijnt eerst op Instagram, bruiloften,
             fashion-collecties en portretten uit heel Nederland.
           </p>
           <a

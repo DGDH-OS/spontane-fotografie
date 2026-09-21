@@ -11,7 +11,7 @@ export default function ContactForm() {
     e.preventDefault();
     const body = `Naam: ${form.naam}\nE-mail: ${form.email}\n\n${form.bericht}`;
     window.location.href = `mailto:${business.email}?subject=${encodeURIComponent(
-      `Contactformulier — ${form.naam}`
+      `Contactformulier: ${form.naam}`
     )}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   }

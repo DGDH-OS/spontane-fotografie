@@ -4,7 +4,7 @@ import { useState } from "react";
 import { portfolioItems, categoryLabels, type PortfolioCategory } from "@/lib/content";
 import PortfolioCard from "@/components/PortfolioCard";
 
-const categories: (PortfolioCategory | "alle")[] = ["alle", "bruiloft", "fashion", "portret", "video"];
+const categories: (PortfolioCategory | "alle")[] = ["alle", "bruiloft", "fashion", "portret"];
 
 export default function PortfolioFilter() {
   const [active, setActive] = useState<(typeof categories)[number]>("alle");

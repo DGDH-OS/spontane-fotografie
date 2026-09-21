@@ -14,9 +14,8 @@ export default function PortfolioPage() {
         <span className="sf-eyebrow">Recent werk</span>
         <h1 className="font-heading text-4xl md:text-5xl">Portfolio</h1>
         <p className="max-w-xl text-sm text-ink/70">
-          Een selectie uit ons werk, filterbaar op categorie. Elke kaart linkt
-          door naar de originele Instagram-post — de definitieve hoge-resolutie
-          beelden voor deze site worden nog aangeleverd door de klant.
+          Een selectie uit ons werk, filterbaar op categorie. Elke foto linkt
+          door naar de originele Instagram-post.
         </p>
       </div>
       <PortfolioFilter />

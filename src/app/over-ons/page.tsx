@@ -22,7 +22,7 @@ export default function OverOnsPage() {
           </p>
           <p>
             Vanuit Lelystad fotograferen en filmen we bruiloften, fashion- en
-            editorialcollecties, portretten en video — met een stijl die
+            editorialcollecties, portretten en video, met een stijl die
             internationaal en tijdloos aanvoelt, en oog heeft voor de
             Marokkaans-Nederlandse bruidsmarkt waar we veel in werken (caftans,
             henna, mounasaba).

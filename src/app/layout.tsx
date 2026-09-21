@@ -18,8 +18,8 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://spontanefilm-fotografie.nl"),
   title: {
-    default: "Spontane Fotografie — Bruiloft & Fashion Fotograaf Lelystad",
-    template: "%s — Spontane Fotografie",
+    default: "Spontane Fotografie · Bruiloft & Fashion Fotograaf Lelystad",
+    template: "%s · Spontane Fotografie",
   },
   description:
     "Bruiloft-, fashion-, portret- en videofotografie vanuit Lelystad. 158K volgers op Instagram. Check je datum en vraag vrijblijvend een offerte aan.",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "videograaf bruiloft",
   ],
   openGraph: {
-    title: "Spontane Fotografie — Bruiloft & Fashion Fotograaf Lelystad",
+    title: "Spontane Fotografie · Bruiloft & Fashion Fotograaf Lelystad",
     description:
       "Bruiloft-, fashion-, portret- en videofotografie vanuit Lelystad.",
     locale: "nl_NL",

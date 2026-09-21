@@ -15,7 +15,7 @@ export default function BoekenPage() {
         <span className="sf-eyebrow">Check beschikbaarheid</span>
         <h1 className="font-heading text-4xl md:text-5xl">Boek je shoot</h1>
         <p className="max-w-xl text-sm text-ink/70">
-          Vul het formulier in met zoveel mogelijk details — dan komen we zo
+          Vul het formulier in met zoveel mogelijk details, dan komen we zo
           snel mogelijk terug met beschikbaarheid en een voorstel. Liever
           direct contact? Bel of mail ons via de{" "}
           <a href="/contact" className="text-gold hover:underline">

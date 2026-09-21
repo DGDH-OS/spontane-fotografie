@@ -22,85 +22,93 @@ export interface PortfolioItem {
   id: string;
   category: PortfolioCategory;
   igUrl: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
   description: string;
   // metrics zijn feitelijke IG-cijfers uit CONTENT-MAP.md, geen testimonial
   metric?: string;
 }
 
+// Foto's gedownload van het publieke Instagram-profiel @spontane_fotografie
+// (via publieke, login-vrije viewer) op 21-09-2026. Originele resolutie,
+// alleen geresized/gecomprimeerd voor web. Geen stockfoto's, geen placeholders.
 export const portfolioItems: PortfolioItem[] = [
   {
     id: "wedding-1",
     category: "bruiloft",
-    igUrl: "https://www.instagram.com/p/DaoKCEkgt19/",
-    description: "\"WE D D I N G - P I C T U R E S\" — bruidspaar-shoot bij @hetpaleisnl.",
+    igUrl: "https://www.instagram.com/p/DdjwBSRAtXl/",
+    image: "/portfolio/wedding-1.jpg",
+    imageWidth: 1088,
+    imageHeight: 1440,
+    description: "The Reverie Collection, Odélia Bridal. Gemaakt voor het moment dat je ja zegt.",
     metric: "731 likes",
   },
   {
     id: "wedding-2",
     category: "bruiloft",
-    igUrl: "https://www.instagram.com/p/DZhWcbztPEk/",
-    description: "Solo bruidsportret, close-up stijl.",
+    igUrl: "https://www.instagram.com/p/Ddg5nFZgvp0/",
+    image: "/portfolio/wedding-2.jpg",
+    imageWidth: 3072,
+    imageHeight: 4096,
+    description: "Wedding pictures bij Het Paleis, met amaria-draagsters en traditionele ceremonie.",
   },
   {
     id: "wedding-3",
     category: "bruiloft",
-    igUrl: "https://www.instagram.com/reel/CzCrS-Ktsge/",
-    description: "Reel: bruid in exclusieve bridal collectie met amaria-draagsters.",
+    igUrl: "https://www.instagram.com/p/DdXECclAmSx/",
+    image: "/portfolio/wedding-3.jpg",
+    imageWidth: 3072,
+    imageHeight: 4096,
+    description: "Weddingpictures met negafa en amaria-draagsters, close-up ceremonie-moment.",
+    metric: "1K likes",
   },
   {
     id: "wedding-4",
     category: "bruiloft",
-    igUrl: "https://www.instagram.com/reel/DTa2uSlCPit/",
-    description: "Reel: traditionele ceremonie, hair/visagie/negafa-credits.",
+    igUrl: "https://www.instagram.com/p/DdRd1LhAnag/",
+    image: "/portfolio/wedding-4.jpg",
+    imageWidth: 3072,
+    imageHeight: 4096,
+    description: "Bruiloft met cateringpartner en amaria-draagsters, licht en compositie op locatie.",
+  },
+  {
+    id: "wedding-5",
+    category: "bruiloft",
+    igUrl: "https://www.instagram.com/p/DdMhKR-giMK/",
+    image: "/portfolio/wedding-5.jpg",
+    imageWidth: 3072,
+    imageHeight: 4096,
+    description: "Wedding pictures, traditionele dabke-muzikant en amaria-draagsters op de dansvloer.",
+    metric: "2K likes",
   },
   {
     id: "fashion-1",
     category: "fashion",
-    igUrl: "https://www.instagram.com/p/CY7Sv8QtQh1/",
-    description: "Bridalcollection editorial voor @maisonfatim.",
+    igUrl: "https://www.instagram.com/p/Dc_anL4At4S/",
+    image: "/portfolio/fashion-1.jpg",
+    imageWidth: 3072,
+    imageHeight: 4096,
+    description: "Wedding pictures met amaria-draagsters, editorial licht- en composities.",
+    metric: "1K likes",
   },
   {
     id: "fashion-2",
     category: "fashion",
-    igUrl: "https://www.instagram.com/p/DW1osHDgPAb/",
-    description: "\"NEW ROMEO BRIDAL DRESS\" — studio-editorial voor Romeo Couture.",
-  },
-  {
-    id: "fashion-3",
-    category: "fashion",
-    igUrl: "https://www.instagram.com/p/CZAmLVFNLS9/",
-    description: "Close-up beauty/fashion shot — portret-fashion crossover.",
-  },
-  {
-    id: "fashion-4",
-    category: "fashion",
-    igUrl: "https://www.instagram.com/p/DW61rQPjZMc/",
-    description: "Caftan-fashion editorial met portret-insteek.",
-    metric: "20K+ likes (re-post)",
+    igUrl: "https://www.instagram.com/p/Dc6dWl2AifQ/",
+    image: "/portfolio/fashion-2.jpg",
+    imageWidth: 3274,
+    imageHeight: 4096,
+    description: "Nieuwe bridal collectie, Marokkaans-geïnspireerde elegantie. Model en designer op locatie.",
   },
   {
     id: "portret-1",
     category: "portret",
     igUrl: "https://www.instagram.com/p/DZGYN-BNh47/",
-    description: "Individueel portret, credit @chez_nouhma.",
-  },
-  {
-    id: "portret-2",
-    category: "portret",
-    igUrl: "https://www.instagram.com/p/CZAmLVFNLS9/",
-    description: "Close-up beauty-portret met sterke lichtregie.",
-  },
-  {
-    id: "video-1",
-    category: "video",
-    igUrl: "https://www.instagram.com/reel/DYcxgRbttIW/",
-    description: "\"The diamond of the season\" — bruiloftsreel, locatie @huizeswan.",
-  },
-  {
-    id: "video-2",
-    category: "video",
-    igUrl: "https://www.instagram.com/reel/C5y0LGWNZSw/",
-    description: "Reel bruidsmode-shoot, bridal + fashion crossover in bewegend beeld.",
+    image: "/portfolio/portret-1.jpg",
+    imageWidth: 1440,
+    imageHeight: 1634,
+    description: "Individueel portret in samenwerking met Chez Nouhma styling.",
   },
 ];
 
@@ -124,7 +132,7 @@ export const services: Service[] = [
     title: "Bruiloft",
     short: "Jullie dag, vastgelegd zonder gestelde poses.",
     description:
-      "Van de eerste voorbereidingen tot het laatste dansje: we volgen de dag zoals hij zich voordoet. Ceremonie, receptie en de stille momenten ertussen — met oog voor traditie en emotie. Ervaring met Marokkaans-Nederlandse bruiloften (caftans, henna, mounasaba) en internationale ceremonies.",
+      "Van de eerste voorbereidingen tot het laatste dansje: we volgen de dag zoals hij zich voordoet. Ceremonie, receptie en de stille momenten ertussen, met oog voor traditie en emotie. Ervaring met Marokkaans-Nederlandse bruiloften (caftans, henna, mounasaba) en internationale ceremonies.",
   },
   {
     slug: "fashion",
@@ -145,7 +153,7 @@ export const services: Service[] = [
     title: "Video",
     short: "Reels, trailers en dronebeeld naast de fotografie.",
     description:
-      "Naast stilstaand beeld leveren we ook bewegend beeld: sfeertrailers, drone-opnames en reel-content — vaak in samenwerking met een videograaf naast de fotograaf op locatie.",
+      "Naast stilstaand beeld leveren we ook bewegend beeld: sfeertrailers, drone-opnames en reel-content, vaak in samenwerking met een videograaf naast de fotograaf op locatie.",
   },
 ];
 
@@ -161,7 +169,7 @@ export const brandLines = [
 export const workflowSteps = [
   {
     step: "1. Intake",
-    text: "We bespreken datum, locatie en wensen. Je krijgt vooraf duidelijkheid over wat je van ons kunt verwachten — ook qua communicatie en planning.",
+    text: "We bespreken datum, locatie en wensen. Je krijgt vooraf duidelijkheid over wat je van ons kunt verwachten, ook qua communicatie en planning.",
   },
   {
     step: "2. De shoot",

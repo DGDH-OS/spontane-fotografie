@@ -38,7 +38,7 @@ export default function BookingForm() {
       form.bericht,
     ].join("\n");
     const mailto = `mailto:${business.email}?subject=${encodeURIComponent(
-      `Boekingsaanvraag — ${form.type} — ${form.naam}`
+      `Boekingsaanvraag: ${form.type}, ${form.naam}`
     )}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
     setSubmitted(true);
@@ -106,7 +106,7 @@ export default function BookingForm() {
       <Field label="Budget-indicatie" full>
         <input
           type="text"
-          placeholder="Optioneel — prijs op aanvraag"
+          placeholder="Optioneel, prijs op aanvraag"
           value={form.budget}
           onChange={(e) => update("budget", e.target.value)}
           className="sf-input"
@@ -136,7 +136,7 @@ export default function BookingForm() {
           </p>
         )}
         <p className="mt-3 text-xs text-ink/50">
-          Prijs op aanvraag — na je aanvraag nemen we contact op met een
+          Prijs op aanvraag. Na je aanvraag nemen we contact op met een
           voorstel op maat.
         </p>
       </div>
