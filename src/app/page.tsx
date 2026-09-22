@@ -40,7 +40,7 @@ export default function Home() {
       {/* DIENSTEN */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
         <div className="mb-10 flex flex-col gap-2">
-          <span className="sf-eyebrow">Wat we fotograferen</span>
+          <span className="sf-eyebrow text-gold-text">Wat we fotograferen</span>
           <h2 className="font-heading text-3xl md:text-4xl">Diensten</h2>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -52,7 +52,7 @@ export default function Home() {
             >
               <h3 className="font-heading text-xl">{s.title}</h3>
               <p className="text-sm text-ink/70">{s.short}</p>
-              <span className="mt-auto text-xs uppercase tracking-widest text-gold">
+              <span className="mt-auto text-xs uppercase tracking-widest text-gold-text">
                 Meer →
               </span>
             </Link>
@@ -65,10 +65,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <span className="sf-eyebrow">Recent werk</span>
+              <span className="sf-eyebrow text-gold-text">Recent werk</span>
               <h2 className="font-heading text-3xl md:text-4xl">Portfolio</h2>
             </div>
-            <Link href="/portfolio" className="text-sm uppercase tracking-widest text-gold hover:underline">
+            <Link href="/portfolio" className="text-sm uppercase tracking-widest text-gold-text hover:underline">
               Bekijk volledige portfolio →
             </Link>
           </div>
@@ -83,7 +83,7 @@ export default function Home() {
       {/* WERKWIJZE */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
         <div className="mb-10 flex flex-col gap-2">
-          <span className="sf-eyebrow">Hoe een boeking verloopt</span>
+          <span className="sf-eyebrow text-gold-text">Hoe een boeking verloopt</span>
           <h2 className="font-heading text-3xl md:text-4xl">Werkwijze</h2>
           <p className="max-w-xl text-sm text-ink/70">
             Transparantie staat voorop: je weet vooraf wat je kunt verwachten,

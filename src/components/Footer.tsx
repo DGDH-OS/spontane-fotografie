@@ -15,12 +15,18 @@ export default function Footer() {
           <div className="text-sm text-ivory/80">
             <p className="sf-eyebrow mb-2 text-gold-soft">Contact</p>
             <p>
-              <a href={`tel:+31${business.phone.slice(1)}`} className="hover:text-gold-soft">
+              <a
+                href={`tel:+31${business.phone.slice(1)}`}
+                className="inline-block py-1.5 hover:text-gold-soft"
+              >
                 {business.phoneDisplay}
               </a>
             </p>
             <p>
-              <a href={`mailto:${business.email}`} className="hover:text-gold-soft">
+              <a
+                href={`mailto:${business.email}`}
+                className="inline-block py-1.5 hover:text-gold-soft"
+              >
                 {business.email}
               </a>
             </p>

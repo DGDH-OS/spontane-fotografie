@@ -12,7 +12,7 @@ export default function DienstenPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-14 md:px-8 md:py-20">
       <div className="mb-10 flex flex-col gap-2">
-        <span className="sf-eyebrow">Wat we fotograferen</span>
+        <span className="sf-eyebrow text-gold-text">Wat we fotograferen</span>
         <h1 className="font-heading text-4xl md:text-5xl">Diensten</h1>
       </div>
 
@@ -29,7 +29,7 @@ export default function DienstenPage() {
                   </span>
                   <Link
                     href="/boeken"
-                    className="text-sm uppercase tracking-widest text-gold hover:underline"
+                    className="text-sm uppercase tracking-widest text-gold-text hover:underline"
                   >
                     Vraag {s.title.toLowerCase()}-shoot aan →
                   </Link>

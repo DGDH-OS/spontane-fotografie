@@ -11,7 +11,7 @@ export default function OverOnsPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-14 md:px-8 md:py-20">
       <div className="mb-10 flex flex-col gap-2">
-        <span className="sf-eyebrow">{business.tagline}</span>
+        <span className="sf-eyebrow text-gold-text">{business.tagline}</span>
         <h1 className="font-heading text-4xl md:text-5xl">Over ons</h1>
       </div>
 
@@ -35,7 +35,7 @@ export default function OverOnsPage() {
         </div>
 
         <div>
-          <h2 className="sf-eyebrow mb-4">Wat je van ons kunt verwachten</h2>
+          <h2 className="sf-eyebrow mb-4 text-gold-text">Wat je van ons kunt verwachten</h2>
           <p className="mb-6 text-sm text-ink/70">
             We hebben van eerdere klantcommunicatie geleerd dat duidelijkheid
             vooraf het belangrijkste is. Daarom maken we onze werkwijze

@@ -14,7 +14,7 @@ export default function PortfolioCard({ item }: { item: PortfolioItem }) {
       rel="noopener noreferrer"
       className="group flex aspect-[4/5] flex-col justify-between border border-line bg-ivory-dim p-5 transition hover:border-gold"
     >
-      <span className="sf-eyebrow">{categoryLabels[item.category]}</span>
+      <span className="sf-eyebrow text-gold-text">{categoryLabels[item.category]}</span>
       <div>
         <p className="font-heading text-lg leading-snug text-ink">
           {item.description}
@@ -24,7 +24,7 @@ export default function PortfolioCard({ item }: { item: PortfolioItem }) {
             {item.metric}
           </p>
         )}
-        <p className="mt-3 text-xs uppercase tracking-widest text-gold group-hover:underline">
+        <p className="mt-3 text-xs uppercase tracking-widest text-gold-text group-hover:underline">
           Bekijk op Instagram →
         </p>
       </div>

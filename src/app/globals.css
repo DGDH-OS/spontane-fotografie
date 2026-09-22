@@ -12,6 +12,7 @@
   --sf-ivory: #f7f3ec;
   --sf-ivory-dim: #efe8db;
   --sf-gold: #a9822f;
+  --sf-gold-text: #8a6a24;
   --sf-gold-soft: #c9a35c;
   --sf-line: #ded3bd;
 
@@ -26,6 +27,7 @@
   --color-ivory: var(--sf-ivory);
   --color-ivory-dim: var(--sf-ivory-dim);
   --color-gold: var(--sf-gold);
+  --color-gold-text: var(--sf-gold-text);
   --color-gold-soft: var(--sf-gold-soft);
   --color-line: var(--sf-line);
   --font-heading: var(--font-heading);
@@ -54,7 +56,6 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   letter-spacing: 0.28em;
   font-size: 0.7rem;
-  color: var(--sf-gold);
 }
 
 .sf-fade-in {
